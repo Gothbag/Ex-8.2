@@ -6,6 +6,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class CarArray {
 
@@ -39,11 +40,25 @@ public class CarArray {
 			
 		}
 		System.out.println();
-		//now we go over the array to print out the details of each car in it.
+		
+		//we print out the car list the "regular" way
+		for (int i=0; i < cars.size(); i++) {
+			Car c = cars.get(i);
+			cars.get(i).setFiscalHorsepower(0);
+			System.out.println(c.getMake() + " " + c.getModel() + " " + c.getEngineDisplacement() + " " + c.getNCylinders());
+		}
+		//now we go over the array to print out the details of each car in it using a "for each" loop
 		for (Car c : cars) {
 			c.setFiscalHorsepower(0);
 			System.out.println(c.getMake() + " " + c.getModel() + " " + c.getEngineDisplacement() + " " + c.getNCylinders());
 			
+		}
+		System.out.println();
+		//now we employ an iterator
+		ListIterator<Car> carIt = cars.listIterator();
+		while (carIt.hasNext()) {
+			Car c = carIt.next();
+			System.out.print(c.getMake() + " " + c.getModel() + " " + c.getEngineDisplacement() + " " + c.getNCylinders());
 		}
 	}
 
